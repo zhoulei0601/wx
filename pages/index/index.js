@@ -1,77 +1,147 @@
-//index.js
-const util = require('../../utils/util.js')
-//获取应用实例
-const app = getApp()
-Page({
-  data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
+import * as echarts from '../../components/ec-canvas/echarts';
+
+let chart = null;
+
+function initChart(canvas, width, height, dpr) {
+  chart = echarts.init(canvas, null, {
+    width: width,
+    height: height,
+    devicePixelRatio: dpr // new
+  });
+  canvas.setChart(chart);
+
+  var option = {
+    color: ['#37a2da', '#32c5e9', '#67e0e3'],
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+        type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+      },
+      confine: true
+    },
+    legend: {
+      data: ['热度', '正面', '负面']
+    },
+    grid: {
+      left: 20,
+      right: 20,
+      bottom: 15,
+      top: 40,
+      containLabel: true
+    },
+    xAxis: [
+      {
+        type: 'value',
+        axisLine: {
+          lineStyle: {
+            color: '#999'
+          }
+        },
+        axisLabel: {
+          color: '#666'
         }
-      })
+      }
+    ],
+    yAxis: [
+      {
+        type: 'category',
+        axisTick: { show: false },
+        data: ['汽车之家', '今日头条', '百度贴吧', '一点资讯', '微信', '微博', '知乎'],
+        axisLine: {
+          lineStyle: {
+            color: '#999'
+          }
+        },
+        axisLabel: {
+          color: '#666'
+        }
+      }
+    ],
+    series: [
+      {
+        name: '热度',
+        type: 'bar',
+        label: {
+          normal: {
+            show: true,
+            position: 'inside'
+          }
+        },
+        data: [300, 270, 340, 344, 300, 320, 310],
+        itemStyle: {
+          // emphasis: {
+          //   color: '#37a2da'
+          // }
+        }
+      },
+      {
+        name: '正面',
+        type: 'bar',
+        stack: '总量',
+        label: {
+          normal: {
+            show: true
+          }
+        },
+        data: [120, 102, 141, 174, 190, 250, 220],
+        itemStyle: {
+          // emphasis: {
+          //   color: '#32c5e9'
+          // }
+        }
+      },
+      {
+        name: '负面',
+        type: 'bar',
+        stack: '总量',
+        label: {
+          normal: {
+            show: true,
+            position: 'left'
+          }
+        },
+        data: [-20, -32, -21, -34, -90, -130, -110],
+        itemStyle: {
+          // emphasis: {
+          //   color: '#67e0e3'
+          // }
+        }
+      }
+    ]
+  };
+
+  chart.setOption(option);
+  return chart;
+}
+
+Page({
+  onShareAppMessage: function (res) {
+    return {
+      title: 'ECharts 可以在微信小程序中使用啦！',
+      path: '/pages/index/index',
+      success: function () { },
+      fail: function () { }
     }
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+  data: {
+    ec: {
+      onInit: initChart
+    },
+    showModal: true, // 显示modal弹窗
+    single: false // false 只显示一个按钮，如果想显示两个改为true即可
   },
-  login:function(){
-    console.log("login");
-    var secretKey = 'thinkgem,jeesite,com';
-    var userNameEncode = util.encode('system', secretKey);
-    var passwordEncode = util.encode('123456', secretKey);
-    console.log(userNameEncode + '=' + passwordEncode)
-    wx.request({
-      url: 'http://192.168.1.115:8980/js/a/login?__login=true&__ajax=json', 
-      method:'POST',
-      data: {
-        username: userNameEncode,
-        password: passwordEncode
-      },
-      dataType: 'json',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success(res) {
-        wx.setStorageSync("sessionid","jeesite.session.id="+ res.data.sessionid);
-        console.log(res.data.user.userCode + res.data.message);
-      }
-    });
+  // 点击取消按钮的回调函数
+  modalCancel(e) {
+    console.log('点击了取消')
+  },
+  // 点击确定按钮的回调函数
+  modalConfirm(e) {
+    console.log('点击了确定')
+  },
+  onReady() {
+    setTimeout(function () {
+      // 获取 chart 实例的方式
+      // console.log(chart)
+    }, 2000);
   }
-})
+});

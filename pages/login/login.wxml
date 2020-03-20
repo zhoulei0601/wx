@@ -1,0 +1,11 @@
+<view class="container">
+ <form bindsubmit='loginForm'>
+  <text class='login-title'>用户登录：</text>
+  <input class="lg_input" type='text' name='username' placeholder="请输入账号"></input>
+  <input class="lg_input" type='password' name='password' placeholder="请输入密码"></input>
+  <view class='ligin-button'>
+    <button class="lg_btn" formType="submit" type='default' style="margin-right:10px;">登录</button>
+    <button class="lg_btn" formType="reset" type='default'>重置</button>
+  </view>
+ </form>
+</view>

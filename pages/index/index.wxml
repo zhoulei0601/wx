@@ -1,28 +1,13 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
- 
-  <view class="page-section">
-    <view class="weui-cells__title">用户名</view>
-    <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell weui-cell_input">
-        <input class="weui-input" auto-focus placeholder=""/>
-      </view>
+  <modalView show="{{showModal}}" bindcancel="modalCancel" bindconfirm='modalConfirm' single='{{single}}'>
+    <view class='modal-content'>
+      <scroll-view scroll-y class='main-content'>
+        <text>echar柱状图示例</text>
+      </scroll-view>
     </view>
-  </view>
-  <view class="page-section">
-    <view class="weui-cells__title">密码</view>
-    <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell weui-cell_input">
-        <input class="weui-input" auto-focus placeholder=""/>
-      </view>
-    </view>
-  </view>
-  <button type="default" hover-class="other-button-hover" bindtap="login"> 登录 </button>
+  </modalView>
+  <div style="width:300px;height:400px;">
+  <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ec}}" force-use-old-canvas="true"></ec-canvas>
+  </div>
 </view>

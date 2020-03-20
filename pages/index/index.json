@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    		"ec-canvas": "../../components/ec-canvas/ec-canvas",
+        "modalView": "../../components/modal/modal"
+  }
 }
