@@ -1,0 +1,8 @@
+<view class="page">
+   <view wx:for="{{work}}" wx:for-item="item">
+    <i-card title="发布领导" extra="{{item.createByName}}">
+      <view slot="content">{{item.workContent}}</view>
+      <view slot="footer">{{item.receiveName}}</view>
+    </i-card>
+   </view>
+</view>
