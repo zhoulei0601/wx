@@ -1,9 +1,87 @@
-input{
-  border: 1px solid lightgrey;
+/**登录页面样式**/
+.container{
+  padding: 0;
 }
-.lg_input{
+.head {
+  width: 85%;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+.head_bg{
+  border: 1px solid #fbecf1;
+  border-radius: 60px;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.head_inner_bg {
+  border-radius: 40px;
+  width: 92px;
+  height: 92px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+.container form{
+  width: 80%;
   margin: 10px auto;
 }
-.lg_btn{
-  display: inline;
+.input-view{
+  box-sizing: border-box;
+  appearance: none;
+  border: 1px solid #e5e5e5;
+  box-shadow: none;
+  border-radius: 44px;
+  height: 43px;
+  width: 100%;
+  background-color: #FFF;
+  margin-bottom: 15px;
+}
+.input-view image{
+  width: 25px;
+  height: 25px;
+  margin-top: 6px;
+  float: right;
+}
+.slf-input{
+  display: inline-block;
+  height: 39px;
+  width: 81%;
+  border:0px solid red;
+  padding: 0px;
+  line-height: 31px;
+  margin: 0px 0px 0px 11px;
+  border-radius: 13px ;
+  color: #353535;
+  font-size: 14px;
+  font-family: inherit;
+}
+.rem{
+  font-size: 14px;
+  text-align: right;
+  margin-bottom: 15px;
+}
+.loginBtn {
+  margin-top: 40px;
+  height: 43px;
+  width: 100%;
+  line-height: 33px;
+  color: #ffffff;
+  font-size: 18px;
+  border-radius: 44px;
+  outline: 0;
+  display: block;
+  margin: 0;
+  font-family: inherit;
+  background: #f35;
+  opacity: 0.8;
+}
+button:not([size='mini']) {
+  width: 100% !important;
 }

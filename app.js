@@ -34,6 +34,21 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    frame: 'guns', //后台框架 jeesite guns
+    baseUrl: 'http://192.168.1.115:9666/',//'http://192.168.1.115:8980/js/a/',
+    jessiteLogin : 'login?__login=true&__ajax=json',
+    gunsLogin : 'login',
+    formHeader: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Cookie': ''
+    },
+    jsonHeader:{
+      'Content-Type': 'application/json;charset=UTF-8',
+      'Cookie': ''
+    },
+    user: {
+      username: '',
+      usercode: ''
+    } 
   }
 })

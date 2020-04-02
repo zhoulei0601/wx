@@ -1,11 +1,25 @@
 <view class="container">
+  <view class="head">
+    <view class="head_bg">
+      <view class="head_inner_bg">
+        <image mode="aspectFit" style="width: 92px;height: 92px;" src="../../img/loginIcon/login.png" />
+      </view>
+    </view>
+  </view>
  <form bindsubmit='loginForm'>
-  <text class='login-title'>用户登录：</text>
-  <input class="lg_input" type='text' name='username' placeholder="请输入账号"></input>
-  <input class="lg_input" type='password' name='password' placeholder="请输入密码"></input>
-  <view class='ligin-button'>
-    <button class="lg_btn" formType="submit" type='default' style="margin-right:10px;">登录</button>
-    <button class="lg_btn" formType="reset" type='default'>重置</button>
+  <view style="width:90%;margin: 0 auto;">
+    <view class="input-view">
+      <input class="slf-input" type='text' name='username'  value='{{username}}' placeholder="请输入账号"></input>
+      <image src="../../img/loginIcon/cancel.png" bindtap="clearAccount"/> 
+    </view>
+    <view class="input-view">
+      <input class="slf-input" type='{{inputType}}' name='password'  value='{{username}}' placeholder="请输入密码"></input>
+      <image src="../../img/loginIcon/eye_protection.png" bindtap="showPsd"/> 
+    </view>
+    <view class="rem">
+      <button id='login' formType="submit" class="loginBtn">登录</button>
+    </view>
   </view>
  </form>
+ <i-toast id="toast" />
 </view>

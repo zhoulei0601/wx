@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "列表示例",
   "usingComponents": {
-  "i-card": "../components/iview/card/index"
+  "i-card": "../../components/iview/card/index"
   }
 }

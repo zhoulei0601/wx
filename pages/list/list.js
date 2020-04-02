@@ -7,14 +7,12 @@ Page({
   },
   onLoad: function () {
     let that = this;
+    var global = getApp().globalData;
     wx.request({
-      url: "http://192.168.1.115:8980/js/a/botgjxhgl/leadershipArrangement/listData",
+      url: global.baseUrl + "botgjxhgl/leadershipArrangement/listData",
       method: 'POST',
       dataType: 'json',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded', // 默认值
-        'cookie': wx.getStorageSync("sessionid")
-      },
+      header: global.formHeader,
       success(res) {
         console.log(res);
         let work = res.data.pageList;
@@ -22,6 +20,15 @@ Page({
           work:work
         });
       }
-    })
+    });
+    wx.request({
+      url: global.baseUrl + "dept/list?page=1&limit=10",
+      method: 'POST',
+      dataType: 'json',
+      header: global.formHeader,
+      success(res) {
+        console.log(res);
+      }
+    });
   }
 })

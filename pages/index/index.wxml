@@ -1,12 +1,5 @@
 <!--index.wxml-->
 <view class="container">
-  <modalView show="{{showModal}}" bindcancel="modalCancel" bindconfirm='modalConfirm' single='{{single}}'>
-    <view class='modal-content'>
-      <scroll-view scroll-y class='main-content'>
-        <text>echar柱状图示例</text>
-      </scroll-view>
-    </view>
-  </modalView>
   <div style="width:300px;height:400px;">
   <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ec}}" force-use-old-canvas="true"></ec-canvas>
   </div>
