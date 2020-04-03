@@ -35,7 +35,7 @@ Page({
     }
     var secretKey = 'thinkgem,jeesite,com';
     var global = getApp().globalData;
-    var isJeesite = global.frame == 'jessite';
+    var isJeesite = global.frame == 'jeesite';
     if (isJeesite){
       username = util.encode(username, secretKey);
       password = util.encode(password, secretKey);

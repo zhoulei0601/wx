@@ -1,6 +1,9 @@
 {
-  "navigationBarTitleText": "列表示例",
+  "navigationBarTitleText": "列表触底加载，上拉刷新",
   "usingComponents": {
   "i-card": "../../components/iview/card/index"
-  }
+  },
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50
 }
