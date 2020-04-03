@@ -2,17 +2,30 @@
   "pages": [
     "pages/login/login",
     "pages/index/index",
-    "pages/list/list"
+    "pages/list/list",
+    "pages/pic/pic"
   ],
   "tabBar": {
+    "color": "#bfbfbf",
+    "selectedColor": "#1296db",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "img/menu/home.png",
+        "selectedIconPath": "img/menu/home_s.png"
       },
       {
         "pagePath": "pages/list/list",
-        "text": "列表"
+        "text": "列表",
+        "iconPath": "img/menu/list.png",
+        "selectedIconPath": "img/menu/list_s.png"
+      },
+      {
+        "pagePath": "pages/pic/pic",
+        "text": "图片",
+        "iconPath": "img/menu/pic.png",
+        "selectedIconPath": "img/menu/pic_s.png"
       }
     ]
   },

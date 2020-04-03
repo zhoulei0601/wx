@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="flex-wrp" style="flex-direction:row;">
+    <block wx:for="{{images}}" wx:key="*this">
+      <view class="image-wrap">
+        <!-- 图片缩略图  -->
+        <image src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview"></image>
+        <!-- 移除图片的按钮  -->
+        <view class="image-remover" data-idx="{{index}}" bindtap="removeImage">删除</view>
+      </view>
+    </block>
+    <button class="image-btn" bindtap="chooseImage" wx:if="{{images.length < 3}}">添加图片</button>
+     <button class="image-btn" bindtap="uploadPic">上传</button>
+  </view>
+  <i-toast id="toast" />
+</view>
